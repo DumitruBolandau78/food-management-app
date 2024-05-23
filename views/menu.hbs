@@ -1,0 +1,154 @@
+<section class="menu-wrapper">
+    <div class="logout">
+        <a href="/account/logout">Log out <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="menu">
+        <div class="categories">
+            <div class="kitchen">
+                <div class="category-title">Bucatarie</div>
+                <ul>
+                    <li class="active-category sushi">Sushi</li>
+                    <li class="pizza">Pizza</li>
+                    <li class="fast-food">Fast Food</li>
+                </ul>
+            </div>
+            <div class="beverage">
+                <div class="category-title">Bar</div>
+                <ul>
+                    <li class="juice">Suc</li>
+                    <li class="natural-juice">Suc natural</li>
+                    <li class="coffe">Cafea</li>
+                </ul>
+            </div>
+        </div>
+        <div class="products">
+            {{#each sushi}}
+            <div class="product sushi active-product">
+                <div class="product-image">
+                    <img src="{{urlImage}}" alt="{{name}}">
+                </div>
+                <div class="info-product">
+                    <div class="title-product">{{name}}</div>
+                    <div class="price">{{price}} RON</div>
+                    <div class="options-product">
+                        <input type="number" name="amount" max="50" min="1" value="1">
+                        <button>Cumpara</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{#each pizza}}
+            <div class="product pizza">
+                <div class="product-image">
+                    <img src="{{urlImage}}" alt="{{name}}">
+                </div>
+                <div class="info-product">
+                    <div class="title-product">{{name}}</div>
+                    <div class="price">{{price}} RON</div>
+                    <div class="options-product">
+                        <input type="number" name="amount" max="50" min="1" value="1">
+                        <button>Cumpara</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{#each fastFood}}
+            <div class="product fast-food">
+                <div class="product-image">
+                    <img src="{{urlImage}}" alt="{{name}}">
+                </div>
+                <div class="info-product">
+                    <div class="title-product">{{name}}</div>
+                    <div class="price">{{price}} RON</div>
+                    <div class="options-product">
+                        <input type="number" name="amount" max="50" min="1" value="1">
+                        <button>Cumpara</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{#each juice}}
+            <div class="product juice">
+                <div class="product-image">
+                    <img src="{{urlImage}}" alt="{{name}}">
+                </div>
+                <div class="info-product">
+                    <div class="title-product">{{name}}</div>
+                    <div class="price">{{price}} RON</div>
+                    <div class="options-product">
+                        <input type="number" name="amount" max="50" min="1" value="1">
+                        <button>Cumpara</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{#each naturalJuice}}
+            <div class="product natural-juice">
+                <div class="product-image">
+                    <img src="{{urlImage}}" alt="{{name}}">
+                </div>
+                <div class="info-product">
+                    <div class="title-product">{{name}}</div>
+                    <div class="price">{{price}} RON</div>
+                    <div class="options-product">
+                        <input type="number" name="amount" max="50" min="1" value="1">
+                        <button>Cumpara</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            {{#each coffe}}
+            <div class="product coffe">
+                <div class="product-image">
+                    <img src="{{urlImage}}" alt="{{name}}">
+                </div>
+                <div class="info-product">
+                    <div class="title-product">{{name}}</div>
+                    <div class="price">{{price}} RON</div>
+                    <div class="options-product">
+                        <input type="number" name="amount" max="50" min="1" value="1">
+                        <button>Cumpara</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <form method="POST" action="/management/{{id}}/payment" class="cart">
+            <div class="cart-title">Produse selectate</div>
+            <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+            <button type="submit" class="submit" style="display: none;"></button>
+        </form>
+    </div>
+    <div class="options">
+        <button><a href="/management">Anulare comanda</a></button>
+        <button  type="submit" onclick="openPopup()" style="cursor: pointer;">
+            <div class="confirm">Confima</div>
+        </button>
+    </div>
+</section>
+
+<div class="popup-payment">
+    <div class="inner">
+        <h3 class="title-popup">Confirmati plata?</h3>
+        <div class="popup-price"><span>Plata totala: </span> <span class="total-price">200 RON</span></div>
+        <div class="options">
+            <button class="yes" onclick="autoclick()">Da</button>
+            <button class="no" onclick="closePopup()">Nu</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function openPopup(){
+        document.querySelector('.popup-payment').classList.add('active-payment');
+    }
+
+    function autoclick() {
+        document.querySelector('.menu-wrapper .cart .submit').click();
+    }
+
+    function closePopup(){
+        document.querySelector('.popup-payment').classList.remove('active-payment');
+    }
+</script>

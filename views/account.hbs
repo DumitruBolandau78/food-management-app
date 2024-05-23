@@ -1,0 +1,61 @@
+{{#if isSignup}}
+    <div class="account-wrapper">
+        <form action="/account/signup" method="POST" class="form signup">
+            <h2>Sign Up</h2>
+            {{#if error}}
+                <p class="error">{{error}}</p>
+            {{/if}}
+            <div class="inputBox">
+                <input type="text" required="required" name="name">
+                <i class="fa-regular fa-user"></i>
+                <span>username</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="email">
+                <i class="fa-regular fa-envelope"></i>
+                <span>email address</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name="password">
+                <i class="fa-solid fa-lock"></i>
+                <span>create password</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name="repeatPassword">
+                <i class="fa-solid fa-lock"></i>
+                <span>confirm password</span>
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="Create Account">
+            </div>
+            <p>Already a member ? <a href="/account/login" class="login">Log in</a></p>
+            <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+        </form>
+    </div>
+{{/if}}
+
+{{#if isLogin}}
+    <div class="account-wrapper signinForm">
+        <form method="POST" action="/account/login" class="form signin">
+            <h2>Log In</h2>
+            {{#if error}}
+                <p class="error">{{error}}</p>
+            {{/if}}
+            <div class="inputBox">
+                <input type="email" name="email" required="required">
+                <i class="fa-regular fa-user"></i>
+                <span>email address</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required="required">
+                <i class="fa-solid fa-lock"></i>
+                <span>password</span>
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="Login">
+            </div>
+            <p>Not Registered ? <a href="/account/signup" class="create">Create an account</a></p>
+            <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+        </form>
+    </div>
+{{/if}}

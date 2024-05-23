@@ -1,0 +1,53 @@
+<section class="tables-wrapper">
+    <div class="logout">
+        <a href="/account/logout">Log out <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="table-list">
+        <ul>
+            {{#each tables}}
+                {{#if isFree}}
+                    <li class="table-item">
+                        <a href="/management/{{id}}" class="inner">
+                            <img src="./table.png" alt="table">
+                            <div class="table-title">{{name}}</div>
+                        </a>
+                    </li>
+                {{else}}
+                    <li class="table-item">
+                        <div class="inner active-table">
+                            <input type="hidden" class='id' value="{{_id}}">
+                            <img src="./table.png" alt="table">
+                            <div class="table-title">{{name}}</div>
+                            <div class="info">
+                                <div class="free-or-not">Masa <span>ocupata</span></div>
+                                <div class="products-bought">
+                                    Produse comandate: <br>
+                                    <span>
+                                        {{#each orders}}
+                                            {{name}}(x{{amount}})
+                                        {{/each}}
+                                    </span>
+                                </div>
+                                <div class="price">Suma totala: <span>{{sum}} RON</span></div>
+                                <div class="btn">
+                                    <button>Elibereaza masa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</section>
+<div class="popup-leave-table">
+    <div class="title">Eliberati masa 7?</div>
+    <div class="options">
+        <form method="post" action="/management">
+            <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+            <input type="hidden" name="id" id="id">
+            <button class="choose-yes">Da</button>
+        </form>
+        <button class="choose-no">Nu</button>
+    </div>
+</div>

@@ -1,0 +1,256 @@
+<section class="admin-panel-wrapper">
+    <div class="logout">
+        <a href="/account/logout">Log out <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <h1 class="title">Admin Panel</h1>
+    <div class="crud-products">
+        <h2 class="main-title-products">Produse Bucatarie</h2>
+        <div class="products-collection">
+            <div class="main-subtitle">Sushi</div>
+            <div class="options">
+                <input type="text" placeholder="Cauta dupa nume" class="name-value">
+                <button class="search">Cauta</button>
+                <button class="open-popup"><i class="fa-solid fa-plus"></i> Adauga Produs</button>
+                <button class="show-all">Arata toate produsele</button>
+
+                <form method="POST" action="/admin-panel/add-product" class="popup-add-product form" enctype="multipart/form-data">
+                    <div class="close-popup"><i class="fa-solid fa-x"></i></div>
+                    <div class="popup-title">Adauga nou Sushi</div>
+                    <input type="text" name="name" required placeholder="Titlu...">
+                    <input type="number" name="price" min="1" required placeholder="Pret...">
+                    <input type="hidden" name="type" value="sushi">
+                    <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                    <div class="file-field input-field">
+                        <p>Incarca o imagine <br>
+                            Formatul recomandat este 800x550 pixeli
+                        </p>
+                        <input type="file" name="productImg" required>
+                    </div>
+                    <div class="btn-submit">
+                        <button type="submit">Adaugare</button>
+                    </div>
+                </form>
+            </div>
+            {{#each sushi}}
+                <div class="product-crud sushi show">
+                    <div class="name">{{name}}</div>
+                    <div class="price">Pret: {{price}} RON</div>
+                    <form method="post" action="/admin-panel/delete" class="delete">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <input type="hidden" value="{{@root.csrf}}" name="_csrf">
+                        <button>
+                            <i class="fa-solid fa-trash"></i> 
+                            Sterge Produs
+                        </button>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+        <div class="products-collection">
+            <div class="main-subtitle">Pizza</div>
+            <div class="options">
+                <input type="text" placeholder="Cauta dupa nume" class="name-value">
+                <button class="search">Cauta</button>
+                <button class="open-popup"><i class="fa-solid fa-plus"></i> Adauga Produs</button>
+                <button class="show-all">Arata toate produsele</button>
+
+                <form method="POST" action="/admin-panel/add-product" class="popup-add-product form" enctype="multipart/form-data">
+                    <div class="close-popup"><i class="fa-solid fa-x"></i></div>
+                    <div class="popup-title">Adauga o noua pizza</div>
+                    <input type="text" name="name" required placeholder="Titlu...">
+                    <input type="number" name="price" min="1" required placeholder="Pret...">
+                    <input type="hidden" name="type" value="pizza">
+                    <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                    <div class="file-field input-field">
+                        <p>Incarca o imagine <br>
+                            Formatul recomandat este 800x550 pixeli
+                        </p>
+                        <input type="file" name="productImg" required>
+                    </div>
+                    <div class="btn-submit">
+                        <button type="submit">Adaugare</button>
+                    </div>
+                </form>
+            </div>
+            {{#each pizza}}
+                <div class="product-crud pizza show">
+                    <div class="name">{{name}}</div>
+                    <div class="price">Pret: {{price}} RON</div>
+                    <form method="post" action="/admin-panel/delete" class="delete">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <input type="hidden" value="{{@root.csrf}}" name="_csrf">
+                        <button>
+                            <i class="fa-solid fa-trash"></i> 
+                            Sterge Produs
+                        </button>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+        <div class="products-collection">
+            <div class="main-subtitle">Fast Food</div>
+            <div class="options">
+                <input type="text" placeholder="Cauta dupa nume" class="name-value">
+                <button class="search">Cauta</button>
+                <button class="open-popup"><i class="fa-solid fa-plus"></i> Adauga Produs</button>
+                <button class="show-all">Arata toate produsele</button>
+
+                <form method="POST" action="/admin-panel/add-product" class="popup-add-product form" enctype="multipart/form-data">
+                    <div class="close-popup"><i class="fa-solid fa-x"></i></div>
+                    <div class="popup-title">Adauga nou Fast-Food produs</div>
+                    <input type="text" name="name" required placeholder="Titlu...">
+                    <input type="number" name="price" min="1" required placeholder="Pret...">
+                    <input type="hidden" name="type" value="fastFood">
+                    <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                    <div class="file-field input-field">
+                        <p>Incarca o imagine <br>
+                            Formatul recomandat este 800x550 pixeli
+                        </p>
+                        <input type="file" name="productImg" required>
+                    </div>
+                    <div class="btn-submit">
+                        <button type="submit">Adaugare</button>
+                    </div>
+                </form>
+            </div>
+            {{#each fastFood}}
+                <div class="product-crud fast-food show">
+                    <div class="name">{{name}}</div>
+                    <div class="price">Pret: {{price}} RON</div>
+                    <form method="post" action="/admin-panel/delete" class="delete">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <input type="hidden" value="{{@root.csrf}}" name="_csrf">
+                        <button>
+                            <i class="fa-solid fa-trash"></i> 
+                            Sterge Produs
+                        </button>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+        <h2 class="main-title-products">Produse Bar</h2>
+        <div class="products-collection">
+            <div class="main-subtitle">Suc</div>
+            <div class="options">
+                <input type="text" placeholder="Cauta dupa nume" class="name-value">
+                <button class="search">Cauta</button>
+                <button class="open-popup"><i class="fa-solid fa-plus"></i> Adauga Produs</button>
+                <button class="show-all">Arata toate produsele</button>
+
+                <form method="POST" action="/admin-panel/add-product" class="popup-add-product form" enctype="multipart/form-data">
+                    <div class="close-popup"><i class="fa-solid fa-x"></i></div>
+                    <div class="popup-title">Adauga nou Suc</div>
+                    <input type="text" name="name" required placeholder="Titlu...">
+                    <input type="number" name="price" min="1" required placeholder="Pret...">
+                    <input type="hidden" name="type" value="suc">
+                    <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                    <div class="file-field input-field">
+                        <p>Incarca o imagine <br>
+                            Formatul recomandat este 800x550 pixeli
+                        </p>
+                        <input type="file" name="productImg" required>
+                    </div>
+                    <div class="btn-submit">
+                        <button type="submit">Adaugare</button>
+                    </div>
+                </form>
+            </div>
+            {{#each juice}}
+                <div class="product-crud juice show">
+                    <div class="name">{{name}}</div>
+                    <div class="price">Pret: {{price}} RON</div>
+                    <form method="post" action="/admin-panel/delete" class="delete">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <input type="hidden" value="{{@root.csrf}}" name="_csrf">
+                        <button>
+                            <i class="fa-solid fa-trash"></i> 
+                            Sterge Produs
+                        </button>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+        <div class="products-collection">
+            <div class="main-subtitle">Suc Natural</div>
+            <div class="options">
+                <input type="text" placeholder="Cauta dupa nume" class="name-value">
+                <button class="search">Cauta</button>
+                <button class="open-popup"><i class="fa-solid fa-plus"></i> Adauga Produs</button>
+                <button class="show-all">Arata toate produsele</button>
+
+                <form method="POST" action="/admin-panel/add-product" class="popup-add-product form" enctype="multipart/form-data">
+                    <div class="close-popup"><i class="fa-solid fa-x"></i></div>
+                    <div class="popup-title">Adauga un nou suc natural</div>
+                    <input type="text" name="name" required placeholder="Titlu...">
+                    <input type="number" name="price" min="1" required placeholder="Pret...">
+                    <input type="hidden" name="type" value="sucNatural">
+                    <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                    <div class="file-field input-field">
+                        <p>Incarca o imagine <br>
+                            Formatul recomandat este 800x550 pixeli
+                        </p>
+                        <input type="file" name="productImg" required>
+                    </div>
+                    <div class="btn-submit">
+                        <button type="submit">Adaugare</button>
+                    </div>
+                </form>
+            </div>
+            {{#each naturalJuice}}
+                <div class="product-crud natural-juice show">
+                    <div class="name">{{name}}</div>
+                    <div class="price">Pret: {{price}} RON</div>
+                    <form method="post" action="/admin-panel/delete" class="delete">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <input type="hidden" value="{{@root.csrf}}" name="_csrf">
+                        <button>
+                            <i class="fa-solid fa-trash"></i> 
+                            Sterge Produs
+                        </button>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+        <div class="products-collection">
+            <div class="main-subtitle">Cafea</div>
+            <div class="options">
+                <input type="text" placeholder="Cauta dupa nume" class="name-value">
+                <button class="search">Cauta</button>
+                <button class="open-popup"><i class="fa-solid fa-plus"></i> Adauga Produs</button>
+                <button class="show-all">Arata toate produsele</button>
+
+                <form method="POST" action="/admin-panel/add-product" class="popup-add-product form" enctype="multipart/form-data">
+                    <div class="close-popup"><i class="fa-solid fa-x"></i></div>
+                    <div class="popup-title">Adauga o cafea noua</div>
+                    <input type="text" name="name" required placeholder="Titlu...">
+                    <input type="number" name="price" min="1" required placeholder="Pret...">
+                    <input type="hidden" name="type" value="cafea">
+                    <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                    <div class="file-field input-field">
+                        <p>Incarca o imagine <br>
+                            Formatul recomandat este 800x550 pixeli
+                        </p>
+                        <input type="file" name="productImg" required>
+                    </div>
+                    <div class="btn-submit">
+                        <button type="submit">Adaugare</button>
+                    </div>
+                </form>
+            </div>
+            {{#each coffe}}
+                <div class="product-crud coffe show">
+                    <div class="name">{{name}}</div>
+                    <div class="price">Pret: {{price}} RON</div>
+                    <form method="post" action="/admin-panel/delete" class="delete">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <input type="hidden" value="{{@root.csrf}}" name="_csrf">
+                        <button>
+                            <i class="fa-solid fa-trash"></i> 
+                            Sterge Produs
+                        </button>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
