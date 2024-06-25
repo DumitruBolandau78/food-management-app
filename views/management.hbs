@@ -19,18 +19,18 @@
                             <img src="./table.png" alt="table">
                             <div class="table-title">{{name}}</div>
                             <div class="info">
-                                <div class="free-or-not">Masa <span>ocupata</span></div>
+                                <div class="free-or-not">Full <span>Table</span></div>
                                 <div class="products-bought">
-                                    Produse comandate: <br>
+                                    Ordered products: <br>
                                     <span>
                                         {{#each orders}}
                                             {{name}}(x{{amount}})
                                         {{/each}}
                                     </span>
                                 </div>
-                                <div class="price">Suma totala: <span>{{sum}} RON</span></div>
+                                <div class="price">Total price: <span>{{sum}} RON</span></div>
                                 <div class="btn">
-                                    <button>Elibereaza masa</button>
+                                    <button>Make table free</button>
                                 </div>
                             </div>
                         </div>
@@ -46,8 +46,8 @@
         <form method="post" action="/management">
             <input type="hidden" name="_csrf" value="{{@root.csrf}}">
             <input type="hidden" name="id" id="id">
-            <button class="choose-yes">Da</button>
+            <button class="choose-yes">Yes</button>
         </form>
-        <button class="choose-no">Nu</button>
+        <button class="choose-no">No</button>
     </div>
 </div>

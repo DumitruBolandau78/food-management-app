@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnsTables.forEach(btn => {
             btn.addEventListener('click', () => {
                 popupTable.classList.add('active');
-                popupTable.querySelector('.title').innerHTML = `Eliberati ${btn.parentNode.parentNode.parentNode.querySelector('.table-title').innerHTML}?`;
+                popupTable.querySelector('.title').innerHTML = `Make empty ${btn.parentNode.parentNode.parentNode.querySelector('.table-title').innerHTML}?`;
                 popupTable.querySelector('#id').value = btn.parentNode.parentNode.parentNode.querySelector('.id').value;
             });
         });

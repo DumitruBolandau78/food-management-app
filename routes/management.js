@@ -16,7 +16,7 @@ router.get('/', authMiddleware, async (req, res) => {
     });
 
     res.render('management', {
-        title: 'Administrare mese',
+        title: 'Tables administration',
         tables,
         csrf: req.csrfToken()
     });
@@ -40,7 +40,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
     const coffe = product.filter(prod => prod.category === 'cafea');
 
     res.render('menu', {
-        title: 'Comanda pentru ' + table.name,
+        title: 'Order for ' + table.name,
         id: req.params.id,
         sushi,
         pizza,
