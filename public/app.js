@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const btnsAddToCart = document.querySelectorAll('.menu-wrapper .products .product button');
+    const btnsAddToCart = document.querySelectorAll('.menu-wrapper .products .product button');3+\67
+    
     const cart = document.querySelector('.menu-wrapper .cart');
 
     if (btnsAddToCart) {
