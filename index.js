@@ -63,9 +63,9 @@ const PORT = 5000 || process.env.PORT;
 
 async function start(){
     try {
-        await mongoose.connect('mongodb+srv://dimabolandau0:xIx24Sl2QIlq196a@cluster0.oo1ngs0.mongodb.net/management');
+        await mongoose.connect(process.env.URL);
         app.listen(PORT);
-        console.log("Port is " + process.env.PORT || 5000);
+        console.log("Port is " + process.env.PORT);
     } catch (error) {
         console.log(error);
     }
