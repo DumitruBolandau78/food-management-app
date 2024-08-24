@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnsTables = document.querySelectorAll('.tables-wrapper .table-item .btn button');
     const popupTable = document.querySelector('.popup-leave-table');
 
-    if(btnsTables && popupTable){
+    if (btnsTables && popupTable) {
         btnsTables.forEach(btn => {
             btn.addEventListener('click', () => {
                 popupTable.classList.add('active');
@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupBtnsClose = document.querySelectorAll('.admin-panel-wrapper .close-popup');
     const popupBtnsOpen = document.querySelectorAll('.admin-panel-wrapper .open-popup')
 
-    if(popupBtnsClose && popupBtnsOpen){
+    if (popupBtnsClose && popupBtnsOpen) {
         popupBtnsClose.forEach(btn => {
             btn.addEventListener('click', () => {
                 btn.parentNode.classList.remove('active-popup');
             });
         });
-        
+
         popupBtnsOpen.forEach(btn => {
             btn.addEventListener('click', () => {
                 btn.parentNode.querySelector('.popup-add-product').classList.add('active-popup');
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productImage = document.querySelectorAll('.menu-wrapper .product-image img');
     const productsCollections = document.querySelectorAll('.menu-wrapper .products .product');
 
-    if(menuCategoryTitles && productImage && productsCollections){
+    if (menuCategoryTitles && productImage && productsCollections) {
         menuCategoryTitles.forEach((li, idx) => {
             li.addEventListener('click', () => {
                 menuCategoryTitles.forEach(el => {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 productsCollections.forEach(prod => {
-                    if(prod.classList.value.includes(menuCategoryTitles[idx].classList.value)){
+                    if (prod.classList.value.includes(menuCategoryTitles[idx].classList.value)) {
                         prod.classList.add('active-product');
                     }
                 });
@@ -60,14 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         productImage.forEach(img => {
-            img.src = img.src.replace('http://localhost:5000/management/images/', '../');
+            img.src = img.src.replace('http://localhost:5000/management/images/', '/');
         });
     }
 
     const btnsAddToCart = document.querySelectorAll('.menu-wrapper .products .product button');
     const cart = document.querySelector('.menu-wrapper .cart');
 
-    if(btnsAddToCart){
+    if (btnsAddToCart) {
         btnsAddToCart.forEach(btn => {
             btn.addEventListener('click', () => {
                 let isSame = false;
@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const price = btn.parentNode.parentNode.querySelector('.price').innerHTML;
                 const amount = btn.parentNode.querySelector('input').value;
 
-                if(cartProducts){
+                if (cartProducts) {
                     cartProducts.forEach(prod => {
                         const equalName = prod.querySelector('.cart-prod-title').innerHTML;
 
-                        if(name === equalName){
+                        if (name === equalName) {
                             const newValue = Number(amount) + Number(prod.querySelector('.cart-prod-price .amount').innerHTML.replace('(x', '').replace(')', ''));
                             prod.querySelector('.cart-prod-price .amount').innerHTML = '(x' + newValue + ')';
                             prod.querySelector('.amount').value = newValue;
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                if(isSame) return;
+                if (isSame) return;
                 cart.innerHTML += `<div class="cart-prod">
                             <input type="hidden" class="name" name="name" value="${name}">
                             <input type="hidden" class="price" name="price" value="${Number(price.replace('RON', ''))}">
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>`
 
                 cart.querySelectorAll('.delete-cart-prod i').forEach(btn => {
-                    btn.onclick =  () => {
+                    btn.onclick = () => {
                         cart.removeChild(btn.parentNode.parentNode);
                     };
                 });
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnsSearch.forEach((btn, idx) => {
         btn.addEventListener('click', () => {
             const name = document.querySelectorAll('.products-collection .name-value')[idx].value.toLowerCase();
-            
+
             const products = collections[idx].querySelectorAll('.product-crud');
 
             products.forEach(prod => {
@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             products.forEach(prod => {
                 const title = prod.querySelector('.name').textContent.toLowerCase();
-                
-                if(title.includes(name)){
+
+                if (title.includes(name)) {
                     prod.classList.add('show');
                 }
             });
