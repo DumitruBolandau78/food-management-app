@@ -50,10 +50,10 @@ app.use(csrf());
 
 app.get('/', (req, res) => {
     if(!req.body.isAuth){
-        res.redirect('/account/login');
-    } else {
-        res.redirect('/management');
+        return res.redirect('/account/login');
     }
+
+    res.redirect('/management');
 });
 app.use('/account', accountRoutes);
 app.use('/management', managementRoutes);
